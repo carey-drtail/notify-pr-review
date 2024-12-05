@@ -27,7 +27,9 @@ const fetchUser = url => axios({
 const D0 = "D-0";
 const sendSlack = ({repoName, labels, title, url, email}) => {
     const [_name] = email.split("@");
+    core.info(`${_name} has parsed.`);
     const name = userMap[_name]
+    core.info(`${_name} replaced with ${name}`);
     const d0exists = labels.some(label => label.name === D0);
 
     return axios({
