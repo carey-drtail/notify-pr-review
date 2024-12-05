@@ -2,6 +2,12 @@
 // Copyright (c) 2023-present NAVER Corp.
 // Apache-2.0
 
+const userMap = {
+  carey: 'Carey',
+  skym887: 'Danny',
+  dlsrllsla: 'sabo'
+}
+
 const core = require('@actions/core');
 const github = require('@actions/github');
 const axios = require('axios');
@@ -20,7 +26,8 @@ const fetchUser = url => axios({
 }).then(res => res.data);
 const D0 = "D-0";
 const sendSlack = ({repoName, labels, title, url, email}) => {
-    const [name] = email.split("@");
+    const [_name] = email.split("@");
+    const name = userMap[_name]
     const d0exists = labels.some(label => label.name === D0);
 
     return axios({
